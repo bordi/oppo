@@ -1,0 +1,16 @@
+---------- Date: 2013-10-10 23:28:33 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /
+MOD DETAILS:
+   modFile   : D:\LocalServer\OpenServer\domains\oppo.lc\www\vqmod/xml/vqmod_filter_products.xml
+   id        : Автоматический фильтр товаров
+   version   : 1.1.0
+   vqmver    : 2.1.5
+   author    : by fJ - inspire-technology.com
+VQModObject::parseMods - Could not resolve path for [admin/controller/common/header.php] (SKIPPED)
+VQModObject::parseMods - Could not resolve path for [admin/language/russian/common/header.php] (SKIPPED)
+VQModObject::parseMods - Could not resolve path for [admin/language/english/common/header.php] (SKIPPED)
+VQModObject::parseMods - Could not resolve path for [admin/view/template/common/header.tpl] (SKIPPED)
+
+----------------------------------------------------------------------
+
+
