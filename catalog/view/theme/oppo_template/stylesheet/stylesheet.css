@@ -2796,28 +2796,28 @@ a.button:hover {
     clear: both;
     overflow: auto;
     min-height: 100px;
-    padding: 20px;
-}
-
-#footer h3 {
-    margin-top: 0px;
-    margin-bottom: 8px;
+    padding: 20px 0 0;
+    font-family: Calibri,Arial,Helvetica;
+    font-size: 13px;
+    color: #2e5454;
 }
 
 #footer .column {
     float: left;
-    width: 25%;
+    /*width: 25%;*/
     min-height: 100px;
 }
 
 #footer .column ul {
-    margin-top: 0px;
-    margin-left: 8px;
-    padding-left: 12px;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
 }
 
 #footer .column ul li {
     margin-bottom: 3px;
+    display: inline-block;
+    margin-right: 30px;
 }
 
 #powered {
@@ -2829,11 +2829,38 @@ a.button:hover {
 /** / Layout **/
 
 /*** Skin ***/
+.copyright{
+    display: table-cell;
+    height: 70px;
+    vertical-align: bottom;
+}
+
+.contact-ico{
+    background: url("../image/main_sprite.png") no-repeat scroll -162px 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 15px;
+    margin-right: 10px;
+    opacity: 0.35;
+    vertical-align: top;
+    width: 9px;
+}
+
+#footer .telephones{
+    margin-right: 0;
+    display: inline-block;
+
+}
+#footer .right-margin{
+    margin-right: 140px;
+}
+
+#footer .contacts{
+    width:120px;
+}
+
 
 #footer {
-    border-top: 1px solid #DBDEE1;
-    border-bottom: 1px solid #DBDEE1;
-    background: #F8F8F8;
+    background: #4D8887;
 }
 
 /** / Skin **/
@@ -2846,10 +2873,13 @@ a.button:hover {
 
 #footer .column a {
     text-decoration: none;
+    color: #b5c9c9;
+    font-size: 13px;
 }
 
 #footer .column a:hover {
-    text-decoration: underline
+    text-decoration: underline;
+    color: #fff;
 }
 
 /** / Typography **/
