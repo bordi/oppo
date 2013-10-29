@@ -26,21 +26,23 @@
 		<div class="left">
 			<?php if ($thumb) { ?>
 				<div class="image">
-					<a href="<?= $popup; ?>" title="<?= $heading_title; ?>" class="colorbox"
-					   rel="colorbox">
+					<a href="<?= $popup; ?>" title="<?= $heading_title; ?>" class="colorbox"  rel="colorbox">
 						<img src="<?= $thumb; ?>" alt="<?= $heading_title; ?>" id="image"/>
 					</a>
-					<a href="#" id="prev" class="nav-btn prev"></a>
-					<a href="#" id="next" class="nav-btn next"></a>
+					<a href="javascript:void(0)" id="prev" class="nav-btn prev"></a>
+					<a href="javascript:void(0)" id="next" class="nav-btn next"></a>
 				</div>
 			<?php } ?>
 			<?php if ($images) { ?>
 				<div class="image-additional">
+					<a href="javascript:void(0)" class="aditional-image" data-rel="<?= $thumb; ?>">
+							<img src="<?= $thumb0; ?>" alt="<?= $heading_title; ?>"/>
+					</a>
 					<?php
 							$last = count($images); 
 							foreach ($images as $imagekey => $image) { 
 						?>
-						<a href="<?= $image['popup']; ?>" class="colorbox <?php if($imagekey==$last-1){ echo "last";} ?>" rel="colorbox">
+						<a href="javascript:void(0)" class="aditional-image <?php if($imagekey%4){ echo "last";} ?>" data-rel="<?= $image['thumb2']; ?>">
 							<img src="<?= $image['thumb']; ?>" alt="<?= $heading_title; ?>"/>
 						</a>
 					<?php } ?>
@@ -266,9 +268,9 @@
 			</div> -->
 			<div class="share">
 				<div class="addthis_default_style">
-					<a class="addthis_button_compact"><?= $text_share; ?></a>
-					<a class="addthis_button_email"></a><a class="addthis_button_print"></a>
-					<a class="addthis_button_facebook"></a> <a class="addthis_button_twitter"></a>
+					<!-- <a class="addthis_button_compact"><?= $text_share; ?></a> -->
+					<a class="addthis_button_facebook share-btn"></a> <a class="addthis_button_twitter share-btn"></a>
+					<a class="addthis_button_google share-btn"></a><a class="addthis_button_email share-btn"></a>
 				</div>
 				<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
 			</div>

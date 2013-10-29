@@ -61,6 +61,35 @@ $(document).ready(function() {
 			$(this).css('margin-left', '-' + (i + 5) + 'px');
 		}
 	});
+//
+//  PRODUCT IMAGES FUCKING CLICKING
+$('.aditional-image').click(function(){
+    var firstSrc = $('#image').attr('src');
+    $('#image').attr('src',$(this).attr('data-rel'));
+});
+
+//=============
+var imgArr = [];
+    $('.aditional-image').each(function(){
+        imgArr.push($(this).attr('data-rel'));
+    })
+
+var currPos = 0;
+var count = imgArr.length-1;
+
+    $('#next').click(function(){
+    	(currPos == count) ? currPos = -1 : currPos;
+    	currPos++;
+    	$('#image').attr('src',imgArr[currPos]);
+	});
+
+	$('#prev').click(function(){
+		(currPos == 0) ? currPos = count+1 : currPos;
+    	currPos--;
+    	$('#image').attr('src',imgArr[currPos]);
+	});
+
+//end of FUCKING CLICKING
 
 	// IE6 & IE7 Fixes
 	if ($.browser.msie) {

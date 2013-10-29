@@ -228,6 +228,7 @@ class ControllerProductProduct extends Controller {
 			
 			if ($product_info['image']) {
 				$this->data['thumb'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_thumb_width'), $this->config->get('config_image_thumb_height'));
+				$this->data['thumb0'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_additional_width'), $this->config->get('config_image_additional_width'));
 			} else {
 				$this->data['thumb'] = '';
 			}

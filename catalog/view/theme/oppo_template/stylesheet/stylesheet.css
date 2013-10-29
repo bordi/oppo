@@ -1783,7 +1783,7 @@ a.btn-cart.white:before{
 .product-info .image-additional a {
     float: left;
     display: block;
-    margin-right: 10px;
+    margin-right: 22px;
     margin-bottom: 10px;
     border: 1px solid #fff;
 }
@@ -1803,12 +1803,12 @@ a.btn-cart.white:before{
 }
 
 .product-info .options {
-    padding: 0px 5px 10px 5px;
+    padding: 0 0 10px;
     margin-bottom: 10px;
 }
 
 .product-info .cart {
-    padding: 0px 5px 10px 5px;
+    padding: 0 0 10px;
     margin-bottom: 20px;
     overflow: auto;
 }
@@ -1830,10 +1830,6 @@ a.btn-cart.white:before{
 
 .product-info .review {
     margin-bottom: 10px;
-}
-
-.product-info .review > div {
-    padding: 8px;
 }
 
 .product-info .review .share {
@@ -1886,20 +1882,6 @@ a.btn-cart.white:before{
 
 .product-info .price {
     border-bottom: 0px solid #E7E7E7;
-}
-
-.product-info .cart {
-    border-bottom: 1px solid #E7E7E7;
-}
-
-.product-info .review {
-    border-top: 1px solid #E7E7E7;
-    border-left: 1px solid #E7E7E7;
-    border-right: 1px solid #E7E7E7;
-}
-
-.product-info .review > div {
-    border-bottom: 1px solid #E7E7E7
 }
 
 /** / Skin **/
@@ -2073,10 +2055,6 @@ a.btn-cart.white:before{
 
 .product-info .cart .minimum {
     font-size: 11px;
-}
-
-.product-info .review {
-    /*color: #4D4D4D;*/
 }
 
 .product-info .review > div {
@@ -2990,4 +2968,48 @@ a.btn-cart.white:before{
 
 .image:hover .nav-btn{
     top: 225px;
+}
+
+.share-btn{
+    background: url("../image/main_sprite.png") no-repeat scroll 0 0 transparent;
+    height: 45px;
+    width: 45px;
+    margin-right: 15px;
+    padding: 0 !important;
+}
+
+.at16nc{
+    display:none;
+}
+
+.addthis_button_facebook{
+    background-position: -232px 0;
+}
+
+.addthis_button_twitter{
+    background-position: -292px 0;
+}
+
+.addthis_button_google{
+    background-position: -352px 0;
+}
+
+.addthis_button_email{
+    background-position: -412px 0;
+}
+
+.addthis_button_facebook:hover{
+    background-position: -232px -49px;
+}
+
+.addthis_button_twitter:hover{
+    background-position: -292px -49px;
+}
+
+.addthis_button_google:hover{
+    background-position: -352px -49px;
+}
+
+.addthis_button_email:hover{
+    background-position: -412px -49px;
 }
