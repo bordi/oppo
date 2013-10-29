@@ -30,12 +30,17 @@
 					   rel="colorbox">
 						<img src="<?= $thumb; ?>" alt="<?= $heading_title; ?>" id="image"/>
 					</a>
+					<a href="#" id="prev" class="nav-btn prev"></a>
+					<a href="#" id="next" class="nav-btn next"></a>
 				</div>
 			<?php } ?>
 			<?php if ($images) { ?>
 				<div class="image-additional">
-					<?php foreach ($images as $image) { ?>
-						<a href="<?= $image['popup']; ?>" class="colorbox" rel="colorbox">
+					<?php
+							$last = count($images); 
+							foreach ($images as $imagekey => $image) { 
+						?>
+						<a href="<?= $image['popup']; ?>" class="colorbox <?php if($imagekey==$last-1){ echo "last";} ?>" rel="colorbox">
 							<img src="<?= $image['thumb']; ?>" alt="<?= $heading_title; ?>"/>
 						</a>
 					<?php } ?>
@@ -77,20 +82,14 @@
 
 	<?php if ($options) { ?>
 		<div class="options">
-			<h2><?= $text_option; ?></h2>
+			
 			<br/>
 			<?php foreach ($options as $option) { ?>
 				<?php if ($option['type'] == 'select') { ?>
 					<div id="option-<?= $option['product_option_id']; ?>" class="option">
-						<?php if ($option['required']) { ?>
-						<label for="option[<?= $option['product_option_id']; ?>]" class="required">
-							<?php } else { ?>
-							<label for="option[<?= $option['product_option_id']; ?>]">
-								<?php } ?>
-								<b><?= $option['name']; ?>:</b></label>
-							<br/>
-							<select name="option[<?= $option['product_option_id']; ?>]">
-								<option value=""><?= $text_select; ?></option>
+							<select name="option[<?= $option['product_option_id']; ?>]" class="product_feature <?php if($option['required']) { echo 'required';} ?>">
+								<option value=""><?= $option['name']; ?></option>
+								<? ?>
 								<?php foreach ($option['option_value'] as $option_value) { ?>
 									<option
 										value="<?= $option_value['product_option_value_id']; ?>"><?= $option_value['name']; ?>
@@ -242,22 +241,14 @@
 	<?php } ?>
 	<section class="cart">
 		<div>
-			<?= $text_qty; ?>
-			<input type="text" name="quantity" size="2" value="<?= $minimum; ?>"/>
+			<input type="text" name="quantity" size="2" value="<?= $minimum; ?>" class="qty-input"/>
 			<input type="hidden" name="product_id" size="2" value="<?= $product_id; ?>"/>
 			&nbsp;
-			<a id="button-cart" class="button"><?= $button_cart; ?></a>
+			<a id="button-cart" class="button btn-cart"><?= $button_cart; ?></a>
 		</div>
 		<div>
-					<span>
-						&nbsp;&nbsp;&nbsp;
-						<?= $text_or; ?>
-						&nbsp;&nbsp;&nbsp;
-					</span>
-		</div>
-		<div>
-			<a onclick="addToWishList('<?= $product_id; ?>');"><?= $button_wishlist; ?></a><br/>
-			<a onclick="addToCompare('<?= $product_id; ?>');"><?= $button_compare; ?></a>
+			<a onclick="addToWishList('<?= $product_id; ?>');" class="button btn-cart white"><?= $button_wishlist; ?></a>
+			<!-- <br/>			<a onclick="addToCompare('<?= $product_id; ?>');" class="button btn-cart white"><?= $button_compare; ?></a> -->
 		</div>
 		<?php if ($minimum > 1) { ?>
 			<div class="minimum"><?= $text_minimum; ?></div>
@@ -265,14 +256,14 @@
 	</section>
 	<?php if ($review_status) { ?>
 		<section class="review">
-			<div>
+			<!-- <div>
 				<img src="catalog/view/theme/default/image/stars-<?= $rating; ?>.png"
 				     alt="<?= $reviews; ?>"/>
 				&nbsp;&nbsp;
 				<a onclick="$('a[href=\'#tab-review\']').trigger('click');"><?= $reviews; ?></a>
 				&nbsp;&nbsp;|&nbsp;&nbsp;
 				<a onclick="$('a[href=\'#tab-review\']').trigger('click');"><?= $text_write; ?></a>
-			</div>
+			</div> -->
 			<div class="share">
 				<div class="addthis_default_style">
 					<a class="addthis_button_compact"><?= $text_share; ?></a>
@@ -285,6 +276,7 @@
 	<?php } ?>
 	</div>
 	</div>
+	<br style="clear:both;">
 	<section id="tabs" class="htabs">
 		<a href="#tab-description"><?= $tab_description; ?></a>
 		<?php if ($attribute_groups) { ?>

@@ -1138,6 +1138,57 @@ a.button:hover {
     border: 1px solid #4d8887;
 }
 
+a.btn-cart{
+    font-size: 13px;
+    background-color: #4d8887;
+    text-transform: uppercase;
+    border: 0 none;
+    color: #fff;
+    padding: 13px 34px 13px 50px;
+}
+
+a.btn-cart:before{
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAALCAYAAABPhbxiAAAACXBIWXMAAC4jAAAuIwF4pT92AAABNmlDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjarY6xSsNQFEDPi6LiUCsEcXB4kygotupgxqQtRRCs1SHJ1qShSmkSXl7VfoSjWwcXd7/AyVFwUPwC/0Bx6uAQIYODCJ7p3MPlcsGo2HWnYZRhEGvVbjrS9Xw5+8QMUwDQCbPUbrUOAOIkjvjB5ysC4HnTrjsN/sZ8mCoNTIDtbpSFICpA/0KnGsQYMIN+qkHcAaY6addAPAClXu4vQCnI/Q0oKdfzQXwAZs/1fDDmADPIfQUwdXSpAWpJOlJnvVMtq5ZlSbubBJE8HmU6GmRyPw4TlSaqo6MukP8HwGK+2G46cq1qWXvr/DOu58vc3o8QgFh6LFpBOFTn3yqMnd/n4sZ4GQ5vYXpStN0ruNmAheuirVahvAX34y/Axk/96FpPYgAAACBjSFJNAAB6JQAAgIMAAPn/AACA6AAAUggAARVYAAA6lwAAF2/XWh+QAAAAUElEQVR42pyOMQ4AIAwCwfT/X8ZFjRqSaplYjoOSYCIANH2lJRBGVwbadQe3B8jCcS0JeTRBopD4MB23Y/tfMv5YeYOsGl+sa7wDAAD//wMAsusRIQZpnLAAAAAASUVORK5CYII=);
+    content: " ";
+    height: 11px;
+    margin-left: -20px;
+    position: absolute;
+    width: 14px;
+}
+
+a.btn-cart:hover{
+    border: 0 none;
+    background-color: #000; 
+}
+
+input[type=text].qty-input{
+    font-size: 16px;
+    height: 37px;
+    line-height: 37px;
+    padding: 0 12px;
+    text-align: center;
+}
+
+a.btn-cart.white{
+    margin-top: 1px;
+    margin-left: 10px;
+    font-size: 13px;
+    background-color: #fff;
+    text-transform: uppercase;
+    border: 1px solid #000;
+    color: #000;
+    padding: 12px 50px 12px;
+}
+
+a.btn-cart.white:hover{
+    background-color: #000;
+    color: #fff;
+}
+
+a.btn-cart.white:before{
+    background: none;
+}
+
 .buttons .left {
     text-align: left;
 }
@@ -1706,23 +1757,25 @@ a.button:hover {
 
 .product-info > .left {
     float: left;
-    margin-right: 15px;
+    margin-right: 30px;
+    width:  480px;
+}
+
+.product-info > .right {
+    float: left;
+    width:  480px;
 }
 
 .product-info > .left + .right {
-    margin-left: 265px;
     min-height: 720px;
 }
 
 .product-info .image {
     float: left;
     margin-bottom: 20px;
-    padding: 10px;
 }
 
 .product-info .image-additional {
-    width: 260px;
-    margin-left: -10px;
     clear: both;
     overflow: hidden;
 }
@@ -1730,8 +1783,13 @@ a.button:hover {
 .product-info .image-additional a {
     float: left;
     display: block;
-    margin-left: 10px;
+    margin-right: 10px;
     margin-bottom: 10px;
+    border: 1px solid #fff;
+}
+
+.product-info .image-additional a.last {
+    margin-right: 0;
 }
 
 .product-info .description {
@@ -1819,24 +1877,15 @@ a.button:hover {
 }
 
 .product-info .image {
-    border: 1px solid #E7E7E7;
+    /*border: 1px solid #E7E7E7;*/
 }
 
-.product-info .image-additional img {
-    border: 1px solid #E7E7E7;
-}
-
-.product-info .description {
-    border-top: 1px solid #E7E7E7;
-    border-bottom: 1px solid #E7E7E7;
+.product-info .image-additional a:hover{
+    border: 1px solid #578f8e;
 }
 
 .product-info .price {
     border-bottom: 0px solid #E7E7E7;
-}
-
-.product-info .options {
-    border-bottom: 1px solid #E7E7E7;
 }
 
 .product-info .cart {
@@ -1948,6 +1997,7 @@ a.button:hover {
 
 .product-info .image {
     text-align: center;
+    position: relative;
 }
 
 .product-info .description {
@@ -2909,3 +2959,35 @@ a.button:hover {
 /** / Typography **/
 
 /********* / BANNER *********/
+
+.nav-btn{
+    background: url("../image/main_sprite.png") no-repeat scroll 0 0 transparent;
+    height: 31px;
+    width: 31px;
+    position: absolute;
+    display: block;
+    top: -31px;
+    transition: top .2s ease-in-out;
+}
+
+.nav-btn.prev{
+    background-position: -161px -20px;
+    left: 0;
+}
+
+.nav-btn.next{
+    background-position: -194px -20px;
+    right: 0;
+}
+
+.nav-btn.prev:hover{
+    background-position: -161px -52px;
+}
+
+.nav-btn.next:hover{
+    background-position: -194px -52px;
+}
+
+.image:hover .nav-btn{
+    top: 225px;
+}
