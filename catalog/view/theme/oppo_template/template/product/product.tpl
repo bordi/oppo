@@ -279,17 +279,16 @@
 	</div>
 	</div>
 	<br style="clear:both;">
+	<div class="separator"></div>
+	<div class="left">
 	<section id="tabs" class="htabs">
 		<a href="#tab-description"><?= $tab_description; ?></a>
 		<?php if ($attribute_groups) { ?>
 			<a href="#tab-attribute"><?= $tab_attribute; ?></a>
 		<?php } ?>
-		<?php if ($review_status) { ?>
+		<!-- <?php if ($review_status) { ?>
 			<a href="#tab-review"><?= $tab_review; ?></a>
-		<?php } ?>
-		<?php if ($products) { ?>
-			<a href="#tab-related"><?= $tab_related; ?> (<?= count($products); ?>)</a>
-		<?php } ?>
+		<?php } ?> -->
 	</section>
 	<section id="tab-description" class="tab-content"><?= $description; ?></section>
 	<?php if ($attribute_groups) { ?>
@@ -313,7 +312,7 @@
 			</table>
 		</section>
 	<?php } ?>
-	<?php if ($review_status) { ?>
+	<!-- <?php if ($review_status) { ?>
 		<section id="tab-review" class="tab-content">
 			<div id="review"></div>
 			<h2 id="review-title"><?= $text_write; ?></h2>
@@ -352,8 +351,11 @@
 				</div>
 			</div>
 		</section>
-	<?php } ?>
-	<?php if ($products) { ?>
+	<?php } ?> -->
+	</div>
+	<?php if ($tags) { ?>
+		<section class="tags"><?= $text_tags; ?></section>
+		<?php if ($products) { ?>
 		<section id="tab-related" class="tab-content">
 			<div class="box-product">
 				<?php foreach ($products as $product) { ?>
@@ -365,38 +367,10 @@
 								</a>
 							</div>
 						<?php } ?>
-						<div class="name"><a href="<?= $product['href']; ?>"><?= $product['name']; ?></a>
-						</div>
-						<?php if ($product['price']) { ?>
-							<div class="price">
-								<?php if (!$product['special']) { ?>
-									<?= $product['price']; ?>
-								<?php } else { ?>
-									<span class="price-old"><?= $product['price']; ?></span>
-									<span class="price-new"><?= $product['special']; ?></span>
-								<?php } ?>
-							</div>
-						<?php } ?>
-						<?php if ($product['rating']) { ?>
-							<div class="rating">
-								<img src="catalog/view/theme/default/image/stars-<?= $product['rating']; ?>.png"
-								     alt="<?= $product['reviews']; ?>"/>
-							</div>
-						<?php } ?>
-						<a onclick="addToCart('<?= $product['product_id']; ?>');"
-						   class="button"><?= $button_cart; ?></a>
-					</div>
 				<?php } ?>
 			</div>
 		</section>
 	<?php } ?>
-	<?php if ($tags) { ?>
-		<section class="tags">
-			<b><?= $text_tags; ?></b>
-			<?php foreach ($tags as $tag) { ?>
-				<a href="<?= $tag['href']; ?>"><?= $tag['tag']; ?></a>,
-			<?php } ?>
-		</section>
 	<?php } ?>
 	<?= $content_bottom; ?>
 	</section>

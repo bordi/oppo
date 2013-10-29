@@ -1,6 +1,6 @@
 <div id="cart">
   <div class="heading">
-    <a class="cart-count"><span id="cart-total"><?php echo $text_items; ?></span></a><span id="cart-price"><?php echo ($text_price!="$0.00") ? $text_price: '' ; ?></span></div>
+    <a class="cart-count"><span id="cart-total"><?php echo $text_items; ?></span></a><span id="cart-price"><?php echo ($text_price!="$0.00") ? substr($text_price, 0, -3): '' ; ?></span></div>
   <div class="content">
     <?php if ($products || $vouchers) { ?>
     <div class="mini-cart-info">

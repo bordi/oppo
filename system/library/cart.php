@@ -201,7 +201,7 @@ class Cart {
 					$download_data = array();     		
 					
 					$download_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_to_download p2d LEFT JOIN " . DB_PREFIX . "download d ON (p2d.download_id = d.download_id) LEFT JOIN " . DB_PREFIX . "download_description dd ON (d.download_id = dd.download_id) WHERE p2d.product_id = '" . (int)$product_id . "' AND dd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
-				
+					
 					foreach ($download_query->rows as $download) {
 						$download_data[] = array(
 							'download_id' => $download['download_id'],
@@ -216,7 +216,7 @@ class Cart {
 					if (!$product_query->row['quantity'] || ($product_query->row['quantity'] < $quantity)) {
 						$stock = false;
 					}
-					
+
 					$this->data[$key] = array(
 						'key'             => $key,
 						'product_id'      => $product_query->row['product_id'],
@@ -240,7 +240,8 @@ class Cart {
 						'length'          => $product_query->row['length'],
 						'width'           => $product_query->row['width'],
 						'height'          => $product_query->row['height'],
-						'length_class_id' => $product_query->row['length_class_id']					
+						'length_class_id' => $product_query->row['length_class_id'],
+						'short_description' => mb_substr($product_query->row['short_description'],0,180,'utf-8'),
 					);
 				} else {
 					$this->remove($key);

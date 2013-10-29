@@ -10,66 +10,69 @@
 <?php } ?>
 <?php echo $column_left; ?><?php echo $column_right; ?>
 <div id="content"><?php echo $content_top; ?>
-  <div class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
+  <section class="breadcrumb">
+    <?php
+    end($breadcrumbs);
+    $last = key($breadcrumbs);
+    foreach ($breadcrumbs as $key => $breadcrumb) { ?>
+      <?php if ($key != $last) { ?>
+        <? if(!prev($breadcrumbs)){ ?> <i class="breadcrumb__separator"></i> <? } ?>
+        <a href="<?= $breadcrumb['href']; ?>"><?= $breadcrumb['text']; ?></a>
+      <?php
+      } else {
+        ?>
+        <i class="breadcrumb__separator"></i>
+        <span><?= $breadcrumb['text']; ?></span>
+      <?php } ?>
     <?php } ?>
-  </div>
-  <h1><?php echo $heading_title; ?>
-    <?php if ($weight) { ?>
-    &nbsp;(<?php echo $weight; ?>)
-    <?php } ?>
-  </h1>
+  </section>
+  <h2><?php echo $heading_title; ?>
+  </h2>
   <div class="border">
   <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
     <div class="cart-info">
       <table>
-        <thead>
-          <tr>
-            <td class="image"><?php echo $column_image; ?></td>
-            <td class="name"><?php echo $column_name; ?></td>
-            <td class="model"><?php echo $column_model; ?></td>
-            <td class="quantity"><?php echo $column_quantity; ?></td>
-            <td class="price"><?php echo $column_price; ?></td>
-            <td class="total"><?php echo $column_total; ?></td>
-          </tr>
-        </thead>
+        <colgroup>
+          <col width="225px" />
+          <col width="225px" />
+          <col width="225px" />
+          <col width="120px" />
+          <col width="" />
+        </colgroup>
         <tbody>
           <?php foreach ($products as $product) { ?>
           <tr>
             <td class="image"><?php if ($product['thumb']) { ?>
               <a href="<?php  echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" /></a>
               <?php } ?></td>
-            <td class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
-              <?php if (!$product['stock']) { ?>
-              <span class="stock">***</span>
-              <?php } ?>
-              <div>
+            <td class="name">
+                <div class="product__name"><?php echo $product['name']; ?></div>
+                <!--<?php if (!$product['stock']) { ?>
+                <span class="stock">***</span>
+                <?php } ?>-->
+                <span class="product__short-desc"><?php  echo $product['short_description']; ?></span>
+            </td>
+            <td class="model">
+                <div class="title">Характеристики:</div>
+                <div><?php echo $product['text_height']."&nbsp;".$product['height'].' см'; ?></div>
+                <div><?php echo $product['text_length']."&nbsp;".$product['length'].' см'; ?></div>
+                <div><?php echo $product['text_width']."&nbsp;".$product['width'].' см'; ?></div>
+                <div>
                 <?php foreach ($product['option'] as $option) { ?>
-                - <small><?php echo $option['name']; ?>: <?php echo $option['value']; ?></small><br />
-                <?php } ?>
-              </div>
-              <?php if ($product['reward']) { ?>
-              <small><?php echo $product['reward']; ?></small>
-              <?php } ?></td>
-            <td class="model"><?php echo $product['model']; ?></td>
-            <td class="quantity"><input type="text" name="quantity[<?php echo $product['key']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" />
+                  <div><?php echo $option['name']; ?>: <?php echo $option['value']; ?></div>
+                  <?php } ?>
+                </div>
+            </td>
+            <td class="quantity">
+              <div class="title"><?php echo $column_quantity; ?></div>
+              <input type="text" name="quantity[<?php echo $product['key']; ?>]" value="<?php echo $product['quantity']; ?>" class="qty-input"/>
               &nbsp;
               <input type="image" src="catalog/view/theme/default/image/update.png" alt="<?php echo $button_update; ?>" title="<?php echo $button_update; ?>" />
-              &nbsp;<a href="<?php echo $product['remove']; ?>"><img src="catalog/view/theme/default/image/remove.png" alt="<?php echo $button_remove; ?>" title="<?php echo $button_remove; ?>" /></a></td>
-            <td class="price"><?php echo $product['price']; ?></td>
-            <td class="total"><?php echo $product['total']; ?></td>
-          </tr>
-          <?php } ?>
-          <?php foreach ($vouchers as $vouchers) { ?>
-          <tr>
-            <td class="image"></td>
-            <td class="name"><?php echo $vouchers['description']; ?></td>
-            <td class="model"></td>
-            <td class="quantity"><input type="text" name="" value="1" size="1" disabled="disabled" />
-              &nbsp;<a href="<?php echo $vouchers['remove']; ?>"><img src="catalog/view/theme/default/image/remove.png" alt="<?php echo $button_remove; ?>" title="<?php echo $button_remove; ?>" /></a></td>
-            <td class="price"><?php echo $vouchers['amount']; ?></td>
-            <td class="total"><?php echo $vouchers['amount']; ?></td>
+              </td>
+            <td class="total">
+              <div class="product__total-price"><?php echo substr($product['total'],0,-3); ?></div>
+              <a href="<?php echo $product['remove']; ?>" class="product__remove-btn"><?php echo $button_remove; ?></a>
+            </td>
           </tr>
           <?php } ?>
         </tbody>

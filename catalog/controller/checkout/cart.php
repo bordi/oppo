@@ -199,7 +199,6 @@ class ControllerCheckoutCart extends Controller {
 				}
 
 				$option_data = array();
-
         		foreach ($product['option'] as $option) {
 					if ($option['type'] != 'file') {
 						$value = $option['option_value'];	
@@ -228,7 +227,7 @@ class ControllerCheckoutCart extends Controller {
 				} else {
 					$total = false;
 				}
-				
+
         		$this->data['products'][] = array(
           			'key'      => $product['key'],
           			'thumb'    => $image,
@@ -236,6 +235,14 @@ class ControllerCheckoutCart extends Controller {
           			'model'    => $product['model'],
           			'option'   => $option_data,
           			'quantity' => $product['quantity'],
+          			'short_description' => $product['short_description'],
+          			'height'   => (int)$product['height'],
+          			'width'    => (int)$product['width'],
+          			'length'   => (int)$product['length'],
+          			'text_length' => $this->language->get('text_length'),
+					'text_width'  => $this->language->get('text_width'),
+					'text_height' => $this->language->get('text_height'),
+
           			'stock'    => $product['stock'] ? true : !(!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning')),
 					'reward'   => ($product['reward'] ? sprintf($this->language->get('text_points'), $product['reward']) : ''),
 					'price'    => $price,
