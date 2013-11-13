@@ -127,13 +127,13 @@ class Controllernewsncategory extends Controller {
 			if ($this->config->get('config_bnews_image_width')) {
             $bwidth = $this->config->get('config_bnews_image_width');
 			} else {
-			$bwidth = 80;
+			$bwidth = 225;
 			}
 			
 			if ($this->config->get('config_bnews_image_height')) {
             $bheight = $this->config->get('config_bnews_image_height');
 			} else {
-			$bheight = 80;
+			$bheight = 225;
 			}
 			
 			$news_total = $this->model_catalog_news->getTotalNews($data);

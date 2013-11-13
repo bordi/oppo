@@ -1,7 +1,7 @@
 <?php
 // Text
 $_['text_refine']       = 'Выберите подкатегорию';
-$_['heading_title']     = 'Все новости';
+$_['heading_title']     = 'Акции и новости';
 $_['text_product']      = 'Товаров';
 $_['text_comments']     = 'Комментариев';
 $_['button_more']       = 'Подробнее';

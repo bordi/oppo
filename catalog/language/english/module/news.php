@@ -1,9 +1,8 @@
 <?php
 // Heading 
-$_['heading_title']  = 'Latest News';
+$_['heading_title']   = 'News/Blog';
 
 // Text
-$_['text_read_more'] = 'read more';
-$_['text_comments'] = 'comments';
-$_['text_headlines'] = 'Headlines';
+$_['text_read_more']  = 'read more';
+$_['text_date_added'] = 'Date Added:';
 ?>

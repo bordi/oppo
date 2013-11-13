@@ -105,6 +105,10 @@ class ControllerCommonHeader extends Controller {
       	$this->data['text_weight_class'] = $this->language->get('text_weight_class');
 		$this->data['text_length_class'] = $this->language->get('text_length_class');
       	$this->data['text_zone'] = $this->language->get('text_zone');
+
+			$this->load->language('module/news');
+			$this->data['text_news'] = $this->language->get('text_news');
+			
 		$this->data['text_select_all'] = $this->language->get('text_select_all');
 		$this->data['text_unselect_all'] = $this->language->get('text_unselect_all');
 		
@@ -198,6 +202,9 @@ class ControllerCommonHeader extends Controller {
 			$this->data['weight_class'] = $this->url->link('localisation/weight_class', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['length_class'] = $this->url->link('localisation/length_class', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['zone'] = $this->url->link('localisation/zone', 'token=' . $this->session->data['token'], 'SSL');
+
+			$this->data['news'] = $this->url->link('module/news/listing', 'token=' . $this->session->data['token'], 'SSL');
+			
 			
 			$this->data['stores'] = array();
 			

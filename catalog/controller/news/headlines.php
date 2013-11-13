@@ -50,17 +50,17 @@ class ControllernewsHeadlines extends Controller {
 				'limit'           => $limit 
 			);
 					 
-			if ($this->config->get('config_bnews_image_width')) {
-            $bwidth = $this->config->get('config_bnews_image_width');
-			} else {
-			$bwidth = 80;
-			}
+			//if ($this->config->get('config_bnews_image_width')) {
+            //$bwidth = $this->config->get('config_bnews_image_width');
+			//} else {
+			$bwidth = 225;
+			//}
 			
-			if ($this->config->get('config_bnews_image_height')) {
-            $bheight = $this->config->get('config_bnews_image_height');
-			} else {
-			$bheight = 80;
-			}
+			//if ($this->config->get('config_bnews_image_height')) {
+            //$bheight = $this->config->get('config_bnews_image_height');
+			//} else {
+			$bheight = 225;
+			//}
 			
 			$news_total = $this->model_catalog_news->getTotalNews($data);
 			$results = $this->model_catalog_news->getNewsLimited($data);
@@ -82,7 +82,7 @@ class ControllernewsHeadlines extends Controller {
 					'article_id'  => $result['news_id'],
 					'name'        => $result['title'],
 					'acom'        => $result['acom'],
-					'thumb'       => $image,
+					'thumb225'       => $image,
 					'description' => $descr_plaintext,
 					'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 					'total_comments' => $this->model_catalog_ncomments->getTotalNcommentsByNewsId($result['news_id']),

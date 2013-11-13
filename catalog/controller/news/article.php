@@ -141,17 +141,17 @@ class ControllerNewsArticle extends Controller {
 					'href'    	 => $this->url->link('product/product', 'product_id=' . $result['product_id']),
 				);
 			}	
-			if ($this->config->get('config_bnews_thumb_width')) {
-            $bwidth = $this->config->get('config_bnews_thumb_width');
-			} else {
-			$bwidth = 150;
-			}
+			// if ($this->config->get('config_bnews_thumb_width')) {
+   //          $bwidth = $this->config->get('config_bnews_thumb_width');
+			// } else {
+			$bwidth = 225;
+			//}
 			
-			if ($this->config->get('config_bnews_thumb_height')) {
-            $bheight = $this->config->get('config_bnews_thumb_height');
-			} else {
-			$bheight = 150;
-			}
+			// if ($this->config->get('config_bnews_thumb_height')) {
+   //          $bheight = $this->config->get('config_bnews_thumb_height');
+			// } else {
+			$bheight = 225;
+			//}
 				
 				if ($news_info['image']) {
 				$this->data['thumb'] = $this->model_tool_image->resize($news_info['image'], $bwidth, $bheight);
