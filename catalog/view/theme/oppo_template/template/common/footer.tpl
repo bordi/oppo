@@ -1,4 +1,6 @@
   	</div>
+    <div class="push"></div>
+</div>
     <footer id="footer">
       <div class="container">
         <section class="column right-margin">

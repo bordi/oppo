@@ -69,6 +69,7 @@
 </head>
 
 <body>
+<div class="main-wrapper">
     <div class="container">
 		<header id="header">
 			<?php if ($logo) { ?>
