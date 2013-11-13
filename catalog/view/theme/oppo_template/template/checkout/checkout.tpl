@@ -91,7 +91,6 @@ $(document).ready(function() {
 			if (json['redirect']) {
 				location = json['redirect'];
 			}
-			
 			if (json['output']) {
 				$('#payment-address .checkout-content').html(json['output']);
 				
