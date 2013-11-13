@@ -2531,11 +2531,16 @@ a.btn-cart.white:before{
 }
 
 .cart-info td {
-    padding: 7px;
+    padding: 7px 7px 30px;
 }
 
+.cart-info td.image {
+    padding: 0 30px 0 0;
+}
+
+
 .cart-info tbody td {
-    vertical-align: middle;
+    vertical-align: top;
 }
 
 .cart-info tbody .remove {
@@ -2554,12 +2559,15 @@ a.btn-cart.white:before{
 }
 
 .cart-total table {
-    float: right;
+    width: 100%;
 }
 
 .cart-total td {
-    padding: 3px;
     text-align: right;
+}
+
+.cart-total td.left {
+    text-align: left;
 }
 
 /** / Layout **/
@@ -2591,7 +2599,12 @@ a.btn-cart.white:before{
 }
 
 .cart-total {
-    border-top: 1px solid #DDDDDD;
+   
+}
+
+.total-price__span{
+    font-size: 20px;
+    font-weight: bold;
 }
 
 /** / Skin **/
@@ -2636,10 +2649,13 @@ a.btn-cart.white:before{
     text-align: left;
 }
 
-.cart-info tbody .quantity,
 .cart-info tbody .price,
 .cart-info tbody .total {
     text-align: right;
+}
+
+.cart-info tbody .quantity{
+    text-align: left;
 }
 
 .cart-info tbody span.stock {
@@ -3025,7 +3041,6 @@ a.btn-cart.white:before{
 
 .product__name{
     font-size: 20px;
-    margin-bottom: 30px;
 }
 
 .product__short-desc{
@@ -3058,9 +3073,10 @@ a.btn-cart.white:before{
 }
 
 .product__total-price{
-    display: table-cell;
-    height: 180px;
-    vertical-align: middle;
+    display: inline-block;
+    height: 115px;
+    padding-top: 25px;
+    width: 100%;
 }
 
 .product__remove-btn{
@@ -3071,4 +3087,21 @@ a.btn-cart.white:before{
     height: 20px;
     line-height: 20px;
     vertical-align: bottom;
+}
+
+.cart-info tbody td.table__noborder{
+    border: none;
+}
+
+a.cart-btn{
+    font-size: 16px;
+    padding: 13px 30px 13px;
+}
+
+a.cart-btn:before{
+    background: none;
+    content: "";
+    height: 0px;
+    margin-left: 0;
+    width: 0px;
 }
