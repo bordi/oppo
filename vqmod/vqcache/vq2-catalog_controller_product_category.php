@@ -257,10 +257,18 @@ class ControllerProductCategory extends Controller {
 				if( mb_strlen($descr_plaintext, 'UTF-8') > $description_symbols ) {
 					$descr_plaintext = mb_substr($descr_plaintext, 0, $description_symbols, 'UTF-8') . '&nbsp;&hellip;';
 				}
-								
+				//(int)$result['product_id']
+				$resultsImages = $this->model_catalog_product->getProductImages( (int)$result['product_id'] );
+				$imgArr = array();
+
+				$imgArr[] = $image;
+				foreach ($resultsImages as $img) {
+					$imgArr[] = $this->model_tool_image->resize($img['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));				
+				}			
 				$this->data['products'][] = array(
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
+					'thumbs'       => $imgArr,
 					'name'        => $result['name'],
 					'description' => $descr_plaintext,
 					'price'       => $price,
@@ -272,6 +280,7 @@ class ControllerProductCategory extends Controller {
 					'reviews'     => sprintf($this->language->get('text_reviews'), (int)$result['reviews']),
 					'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'])
 				);
+				unset($imgArr);
 			}
 			
 			$url = '';

@@ -3,25 +3,25 @@
 <?php echo $column_right; ?>
 <section id="content">
 	<?php echo $content_top; ?>
-  	<section class="breadcrumb">
+  	<!-- <section class="breadcrumb">
     	<?php foreach ($breadcrumbs as $breadcrumb) { ?>
     		<?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
     	<?php } ?>
-  	</section>
+  	</section> -->
   	<h1><?php echo $heading_title; ?></h1>
   	<?php if ($thumb || $description) { ?>
-  		<section class="category-info">
+  		<!-- <section class="category-info">
     		<?php if ($thumb) { ?>
     			<div class="image"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" /></div>
     		<?php } ?>
     		<?php if ($description) { ?>
     			<?php echo $description; ?>
     		<?php } ?>
-  		</section>
+  		</section> -->
   	<?php } ?>
   	<?php if ($categories) { ?>
-  		<h2><?php echo $text_refine; ?></h2>
-  		<section class="category-list">
+  		<!-- <h2><?php echo $text_refine; ?></h2>
+  		 <section class="category-list">
     		<?php if (count($categories) <= 5) { ?>
     			<ul>
       				<?php foreach ($categories as $category) { ?>
@@ -40,10 +40,10 @@
     				</ul>
     			<?php } ?>
     		<?php } ?>
-  		</section>
+  		</section>  -->
   	<?php } ?>
   	<?php if ($products) { ?>
-  		<section class="product-filter">
+  		<!-- <section class="product-filter">
     		<div class="display">
 				<b><?php echo $text_display; ?></b> 
 				<?php echo $text_list; ?> 
@@ -73,53 +73,42 @@
         			<?php } ?>
       			</select>
     		</div>
-  		</section>
-  		<div class="product-compare"><a href="<?php echo $compare; ?>" id="compare_total"><?php echo $text_compare; ?></a></div>
-  		<section class="product-list">
+  		</section> -->
+  		<!-- <div class="product-compare"><a href="<?php echo $compare; ?>" id="compare_total"><?php echo $text_compare; ?></a></div> -->
+  		<section class="product-grid">
     		<?php foreach ($products as $product) { ?>
-    			<article>
+    			<article class="product__box">
       				<?php if ($product['thumb']) { ?>
       					<div class="image">
-							<a href="<?php echo $product['href']; ?>">
-								<img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" />
+							<a href="<?php echo $product['href']; ?>" class="main__image">
+								<img class="product__image" src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" data-rel=<?= json_encode($product['thumbs']); ?> data-count="0" />
 							</a>
+						<?php if (count($product['thumbs'])>1) { ?>
+							<a class="nav-btn prev" id="prev" href="javascript:void(0)"></a>
+							<a class="nav-btn next" id="next" href="javascript:void(0)"></a>
+						<?php } ?>
 						</div>
       				<?php } ?>
       				<div class="name">
-						<a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
+						<?php echo $product['name']; ?>
 					</div>
       				<div class="description"><?php echo $product['description']; ?></div>
       				<?php if ($product['price']) { ?>
       					<div class="price">
-        					<?php if (!$product['special']) { ?>
-        						<?php echo $product['price']; ?>
-        					<?php } else { ?>
-        						<span class="price-old"><?php echo $product['price']; ?></span> 
-								<span class="price-new"><?php echo $product['special']; ?></span>
-        					<?php } ?>
-        					<?php if ($product['tax']) { ?>
-        						<br />
-        						<span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>
-        					<?php } ?>
+        						<span class="price-tax"><?php echo $product['tax']; ?></span>
       					</div>
       				<?php } ?>
-      				<?php if ($product['rating']) { ?>
-      					<div class="rating">
-							<img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" />
-						</div>
-      				<?php } ?>
       				<div class="cart">
-						<a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button"><?php echo $button_cart; ?></a>
+						<a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button btn-cart small-btn"><?php echo $button_cart; ?></a>
+						<a onclick="addToCompare('<?php echo $product['product_id']; ?>');" class="button btn-cart white small-btn"><?php echo $button_compare; ?></a>
 					</div>
-      				<div class="wishlist">
+      				<!-- <div class="wishlist">
 						<a onclick="addToWishList('<?php echo $product['product_id']; ?>');"><?php echo $button_wishlist; ?></a>
-					</div>
-      				<div class="compare">
-						<a onclick="addToCompare('<?php echo $product['product_id']; ?>');"><?php echo $button_compare; ?></a>
-					</div>
+					</div> -->
     			</article>
     		<?php } ?>
   		</section>
+  		<div class="sep_product"></div>
   		<section class="pagination"><?php echo $pagination; ?></section>
 	<?php } ?>
 	<?php if (!$categories && !$products) { ?>
@@ -133,6 +122,38 @@
 	<?php echo $content_bottom; ?>
 </section>
 <script type="text/javascript"><!--
+// FUCKING PAGINATION IMAGE
+
+
+$('.nav-btn.next').click(function(){
+	var currImg  = $(this).siblings('.main__image').find('.product__image');;
+	var currPos = currImg.attr('data-count');
+	var imageJSON = currImg.attr('data-rel');
+	var resImgArr = JSON.parse(imageJSON);	
+	var count = resImgArr.length;
+	currPos++;
+	(currPos == count) ? currPos = 0 : currPos;  
+    
+    $(currImg).attr('src',resImgArr[currPos]);
+    
+    currImg.attr('data-count',currPos);
+});
+
+$('.nav-btn.prev').click(function(){
+	var currImg  = $(this).siblings('.main__image').find('.product__image');;
+	var currPos = currImg.attr('data-count');
+	var imageJSON = currImg.attr('data-rel');
+	var resImgArr = JSON.parse(imageJSON);	
+	var count = resImgArr.length;
+	currPos--;
+	(currPos == -1) ? currPos = count-1 : currPos;
+    
+    $(currImg).attr('src',resImgArr[currPos]);
+  	
+    currImg.attr('data-count',currPos);
+});
+
+// END OF FUCKING MAGIC
 function display(view) {
 	if (view == 'list') {
 		$('.product-grid').attr('class', 'product-list');
@@ -175,7 +196,7 @@ function display(view) {
 		
 		$('.display').html('<b><?php echo $text_display; ?></b> <?php echo $text_list; ?> <b>/</b> <a onclick="display(\'grid\');"><?php echo $text_grid; ?></a>');
 		
-		$.cookie('display', 'list'); 
+		$.cookie('display', 'grid'); 
 	} else {
 		$('.product-list').attr('class', 'product-grid');
 		
@@ -212,7 +233,7 @@ function display(view) {
 					
 		$('.display').html('<b><?php echo $text_display; ?></b> <a onclick="display(\'list\');"><?php echo $text_list; ?></a> <b>/</b> <?php echo $text_grid; ?>');
 		
-		$.cookie('display', 'grid');
+		
 	}
 }
 
@@ -221,7 +242,7 @@ view = $.cookie('display');
 if (view) {
 	display(view);
 } else {
-	display('list');
+	display('grid');
 }
 //--></script> 
 <?php echo $footer; ?>
