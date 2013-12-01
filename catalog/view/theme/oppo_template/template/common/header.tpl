@@ -7,10 +7,9 @@
 <!DOCTYPE html>
 <html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>">
 <head>
+	<meta name="viewport" content="width=1100, maximum-scale=1">
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
 	<title><?php echo $title; ?></title>
 	
 	<base href="<?php echo $base; ?>" >

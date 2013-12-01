@@ -1764,6 +1764,7 @@ a.btn-cart.white:before{
     color: #888;
     text-decoration: none;
     font-size: 15px;
+    margin-top: 10px;
 }
 
 .product-grid .description {
@@ -3209,4 +3210,8 @@ a.btn-cart.white.small-btn{
 
 .product__box:hover .nav-btn{
     top: 90px;
+}
+
+.category__title{
+    text-align: center;
 }
