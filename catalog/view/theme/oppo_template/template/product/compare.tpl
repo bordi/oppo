@@ -128,12 +128,7 @@
    					<tr>
    						<td></td>
    						<?php foreach ($products as $product) { ?>
-   							<td>
-								<form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
-       								<input type="hidden" name="remove" value="<?php echo $product['product_id']; ?>" />
-       								<a class="button" onclick="$(this).parent().submit();"><?php echo $text_remove; ?></a>
-       							</form>
-							</td>
+   							<td class="remove"><a href="<?php echo $product['remove']; ?>" class="button"><?php echo $button_remove; ?></a></td>
    						<?php } ?>
    					</tr>
 				</table>
