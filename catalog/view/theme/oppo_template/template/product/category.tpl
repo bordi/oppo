@@ -125,7 +125,7 @@
 // FUCKING PAGINATION IMAGE
 
 
-$('.nav-btn.next').click(function(){
+$('.nav-btn.next').live('click touchstart',function(){
 	var currImg  = $(this).siblings('.main__image').find('.product__image');;
 	var currPos = currImg.attr('data-count');
 	var imageJSON = currImg.attr('data-rel');
@@ -139,7 +139,7 @@ $('.nav-btn.next').click(function(){
     currImg.attr('data-count',currPos);
 });
 
-$('.nav-btn.prev').click(function(){
+$('.nav-btn.prev').live('click touchstart',function(){
 	var currImg  = $(this).siblings('.main__image').find('.product__image');;
 	var currPos = currImg.attr('data-count');
 	var imageJSON = currImg.attr('data-rel');
