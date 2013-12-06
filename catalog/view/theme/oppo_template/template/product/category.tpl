@@ -54,7 +54,7 @@
       			<select onchange="location = this.value;">
         			<?php foreach ($limits as $limits) { ?>
         				<?php if ($limits['value'] == $limit) { ?>
-        					<option value="<?php echo $limits['href']; ?>" selected="selected"><?php echo $limits['text']; ?></option>
+        					<option value="<?php /*echo $limits['href']; ?>" selected="selected"><?php echo $limits['text']; */?></option>
         				<?php } else { ?>
         					<option value="<?php echo $limits['href']; ?>"><?php echo $limits['text']; ?></option>
         				<?php } ?>

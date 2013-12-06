@@ -280,6 +280,7 @@ class ControllerProductCategory extends Controller {
 					'reviews'     => sprintf($this->language->get('text_reviews'), (int)$result['reviews']),
 					'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'])
 				);
+
 				unset($imgArr);
 			}
 			
