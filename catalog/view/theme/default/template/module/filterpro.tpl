@@ -1,9 +1,5 @@
 <?php if($tags || $categories || $options || $manufacturers || $attributes || $price_slider) { ?>
-<div class="box">
-<div class="box-heading"><?php echo $heading_title; ?></div>
-<div class="box-content">
 <form id="filterpro">
-<div style="height: 15px"><a class="clear_filter"><?php echo $clear_filter?></a></div>
 
 <div class="option_box" <?php if(!$instock_visible) echo 'style="display:none"'; ?>>
 	<input type="checkbox" class="filtered" name="instock" id="instock" <?php if($instock_checked) echo 'checked="checked"'; ?>><label for="instock"><?php echo $text_instock?></label>
@@ -35,20 +31,25 @@
 <input type="hidden" name="order" id="filterpro_order" value="">
 <input type="hidden" name="limit" id="filterpro_limit" value="">
 
-<div class="price_slider" <?php if(!$price_slider) { echo 'style="display:none"';}?>>
-	<label for="min_price"><?php echo $text_price_range?></label><br/>
-	<table>
-		<tr>
-			<?php if($symbol_left){ echo "<td><b>".$symbol_left."</b></td>";}?>
-			<td><input class="price_limit" type="text" name="min_price" value="-1" id="min_price"/></td>
-			<td>-</td>
-			<td><input class="price_limit" type="text" name="max_price" value="-1" id="max_price"/></td>
-			<?php if($symbol_right){ echo "<td><b>".$symbol_right."</b></td>";}?>
-		</tr>
-	</table>
-	<div id="slider-range"></div>
+<div class="option_box">
+	<div class="option_name <?php if(!$expanded_categories){echo "";}?>"><?php echo $text_price; ?></div>
+	<div class="collapsible" <?php if(!$expanded_categories){echo 'style="display:block"';}?>>
+		<div class="price_slider" <?php if(!$price_slider) { echo 'style="display:none"';}?>>
+			<div id="slider-range"></div>
+			<div class="inputs">
+				<div class="left__input">
+					<?php if($symbol_left){ echo $symbol_left;}?>
+					<input class="price_limit" type="text" name="min_price" value="-1" id="min_price"/>
+				</div>
+				<div class="right__input">
+					<?php if($symbol_left){ echo $symbol_left;}?>
+					<input class="price_limit" type="text" name="max_price" value="-1" id="max_price"/>
+				</div>
+				<br style="clear:both;">
+			</div>
+		</div>
+	</div>
 </div>
-
 	<?php if($categories) { ?>
 <div class="option_box">
 	<div class="option_name <?php if(!$expanded_categories){echo "hided";}?>"><?php echo $text_categories; ?></div>
@@ -308,7 +309,7 @@
 					<input style="display: none;" class="filtered option_value" id="option_value_<?php echo $option_value['option_value_id']?>"
 						   type="checkbox" name="option_value[<?php echo $option['option_id']?>][]"
 						   value="<?php echo $option_value['option_value_id']?>">
-					<img src="<?php echo $option_value['thumb'];?>" onclick="$('#option_value_<?php echo $option_value['option_value_id']?>').click()"/>
+					<img src="<?php echo $option_value['thumb'];?>" onclick="$('#option_value_<?php echo $option_value['option_value_id']?>').click()" class="filter__img"/>
 
 			<?php } ?>
 		</div>
@@ -316,13 +317,10 @@
 	</div>
 		<?php } ?>
 	<?php } ?>
+	<div style="height: 15px;margin-top:20px;"><a class="clear_filter"><?php echo $clear_filter?></a></div>
 </form>
-</div>
-
 
 <script id="productTemplate" type="text/x-jquery-tmpl">
-	
-	<section class="product-grid">
 		<article class="product__box">
 			{{if thumb}}
 			<div class="image">
@@ -347,9 +345,5 @@
 				<a onclick="addToCompare('${product_id}');" class="button btn-cart white small-btn"><?php echo $button_compare; ?></a>
 			</div>
 		</article>
-	</section>
-
-	
 </script>
-</div>
 <?php } ?>

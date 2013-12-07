@@ -416,6 +416,7 @@ a:hover {
     position: relative;
     padding-right: 15px;
     transition: all 0.2s ease-in-out;
+    outline:none;
 }
 
 #search .search_input:focus{
@@ -1720,6 +1721,7 @@ a.btn-cart.white:before{
 
 .product-grid {
     width: 100%;
+    position:relative;
 }
 
 .product-grid > div,
@@ -2041,6 +2043,7 @@ a.btn-cart.white:before{
     font-size: 30px;
     font-weight: bold;
     line-height: 30px;
+    overflow: hidden;
 }
 
 .product-info .price-old {
@@ -3214,4 +3217,37 @@ a.btn-cart.white.small-btn{
 
 .category__title{
     text-align: center;
+}
+
+.product__color{
+    border: 1px solid #dedede;
+    transition: all .2s ease-in-out;
+}
+.product__color.active{
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0.5);
+}
+
+.color__box{
+    float: left;
+    margin: 0 15px 15px 0;
+}
+
+.color__title-toggle{
+    font-size: 13px;
+    padding: 0 0 10px 0;
+}
+
+.option-image{
+    display: block;
+}
+
+.product__featured{
+    margin-right: 10px !important;
+    margin-bottom: 10px !important;
+    float: left;
+    width: 85px !important;
 }

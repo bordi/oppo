@@ -12,7 +12,7 @@ function doquick_search( ev, keywords ) {
 	}
 	keywords = encodeURI(keywords);
 
-	$.ajax({url: $('base').attr('href') + 'index.php?route=product/search/ajax&keyword=' + keywords, dataType: 'json', success: function(result) {
+	$.ajax({url: $('base').attr('href') + 'index.php?route=product/search/ajax&keyword=' + keywords, dataType: 'json',cache:true, success: function(result) {
 		if( result.length > 0 ) {
 			var eList = document.createElement('ul');
 			eList.id = 'quick_search_results';
@@ -83,8 +83,6 @@ $(document).ready(function(){
 		doquick_search(ev, this.value);
 	}).keydown(function(ev){
 		upDownEvent( ev );
-	}).blur(function(){
-		$('#quick_search_results').remove();updown=0;
 	});
 	$(document).bind('keydown', function(ev) {
 		try {
@@ -93,5 +91,13 @@ $(document).ready(function(){
 			}
 		}
 		catch(e) {}
+	});
+
+	$('body').live('click touchstart',function(){
+		$('#quick_search_results').remove();updown=0;
+	});
+
+	$('#search, #quick_search_results').live('click touchstart',function(e){
+		e.stopPropagation();
 	});
 });

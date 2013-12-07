@@ -1,4 +1,15 @@
 $(document).ready(function() {
+	$('#quick_search_results a').live('click touchstart',function(e){
+		e.stopPropagation();
+	});
+
+
+	$('.product__color').live('click touchstart',function(){
+		$('.product__color').each(function(){
+			$(this).removeClass('active');
+		});
+		$(this).toggleClass('active');
+	});
 	/* Search */
 	$('.button-search').bind('click', function() {
 		url = $('base').attr('href') + 'index.php?route=product/search';
@@ -6,7 +17,7 @@ $(document).ready(function() {
 		var filter_name = $('input[name=\'filter_name\']').attr('value');
 		
 		if (filter_name) {
-			url += '&filter_name=' + encodeURIComponent(filter_name);
+			url += '&filter_name=' + decodeURIComponent(filter_name);
 		}
 		
 		location = url;
@@ -19,7 +30,7 @@ $(document).ready(function() {
 			var filter_name = $('input[name=\'filter_name\']').attr('value');
 			
 			if (filter_name) {
-				url += '&filter_name=' + encodeURIComponent(filter_name);
+				url += '&filter_name=' + decodeURIComponent(filter_name); 
 			}
 			
 			location = url;

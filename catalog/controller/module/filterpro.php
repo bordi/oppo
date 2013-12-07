@@ -157,6 +157,7 @@ class ControllerModuleFilterPro extends Controller {
 			$this->data['pds_stock'] = $this->language->get('pds_stock');
 			$this->data['symbol_right'] = $this->currency->getSymbolRight();
 			$this->data['symbol_left'] = $this->currency->getSymbolLeft();
+			$this->data['text_price'] = $this->language->get('text_price');
 
 			$this->data['setting'] = $setting;
 

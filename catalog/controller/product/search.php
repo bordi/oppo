@@ -116,7 +116,8 @@ class ControllerProductSearch extends Controller {
 		if (isset($this->request->get['limit'])) {
 			$url .= '&limit=' . $this->request->get['limit'];
 		}
-						
+
+				
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('product/search', $url),
@@ -293,7 +294,7 @@ class ControllerProductSearch extends Controller {
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
-						
+					
 			$this->data['sorts'] = array();
 			
 			$this->data['sorts'][] = array(
@@ -507,7 +508,7 @@ class ControllerProductSearch extends Controller {
 				$res = $this->db->query( $sql );
 				if( $res ) {
 					$data = ( isset($res->rows) ) ? $res->rows : $res->row;
-					$basehref = 'product/product&keyword=' . $this->request->get['keyword'] . '&product_id=';
+					$basehref = 'product/product&keyword='.$this->request->get['keyword'].'&product_id=';
 					foreach( $data as $key => $values ) {
 						if ($key['image']) {
 							$image = $this->model_tool_image->resize($key['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
@@ -517,7 +518,7 @@ class ControllerProductSearch extends Controller {
 						$data[$key] = array(
 							'thumb' => $image,
 							'name'  => htmlspecialchars_decode($values['name'], ENT_QUOTES),
-							'href'  => $this->url->link($basehref . $values['product_id'])
+							'href'  => htmlspecialchars_decode($this->url->link($basehref.$values['product_id']))
 						);
 					}
 				}

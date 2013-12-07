@@ -57,6 +57,11 @@
 		<div class="price">
 			<span ><?= $price; ?></span>
 		</div>
+		<div class="manufactor">
+			<?php if ($manufacturer) { ?>
+		        <span><?php echo $text_manufacturer; ?></span> <a href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a><br />
+		    <?php } ?>
+		</div>
 		<div class="short__story">
 			<? echo $short_description; ?>
 		</div>
@@ -129,7 +134,7 @@
 					<br/>
 				<?php } ?>
 				<?php if ($option['type'] == 'checkbox') { ?>
-					<div id="option-<?= $option['product_option_id']; ?>" class="option">
+					<!-- <div id="option-<?= $option['product_option_id']; ?>" class="option">
 						<?php if ($option['required']) { ?>
 						<label for="option[<?= $option['product_option_id']; ?>][]" class="required">
 							<?php } else { ?>
@@ -150,7 +155,7 @@
 								<br/>
 							<?php } ?>
 					</div>
-					<br/>
+					<br/> -->
 				<?php } ?>
 				<?php if ($option['type'] == 'text') { ?>
 					<div id="option-<?= $option['product_option_id']; ?>" class="option">
@@ -238,6 +243,24 @@
 					</div>
 					<br/>
 				<?php } ?>
+				<?php if ($option['type'] == 'image') { ?>
+			        <div id="option-<?php echo $option['product_option_id']; ?>" class="option">
+			          <?php if ($option['required']) { ?>
+			          <span class="required">*</span>
+			          <?php } ?>
+			          <div class="color__title-toggle"><?php echo $option['name']; ?>:</div>
+			          <div class="option-image">
+			            <?php foreach ($option['option_value'] as $option_value) { ?>		            
+			             <input style="display:none;" type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" id="option-value-<?php echo $option_value['product_option_value_id']; ?>" />
+			              <div class="color__box">
+			              	<label for="option-value-<?php echo $option_value['product_option_value_id']; ?>"><img class="product__color" src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" /></label>
+			              </div>
+			            <?php } ?>
+			            <br style="clear:both;">
+			          </div>
+			        </div>
+			        <br />
+		        <?php } ?>
 			<?php } ?>
 		</div>
 	<?php } ?>
@@ -359,15 +382,17 @@
 		<section id="tab-related" class="tab-content">
 			<div class="box-product">
 				<?php foreach ($products as $product) { ?>
-					<div>
+					<div class="product__featured">
 						<?php if ($product['thumb']) { ?>
 							<div class="image">
-								<a href="<?= $product['href']; ?>">
+								<a href="<?= $product['href']; ?>" style="display:block;">
 									<img src="<?= $product['thumb']; ?>" alt="<?= $product['name']; ?>"/>
 								</a>
 							</div>
 						<?php } ?>
+					</div>
 				<?php } ?>
+				<br style="clear:both;">
 			</div>
 		</section>
 	<?php } ?>

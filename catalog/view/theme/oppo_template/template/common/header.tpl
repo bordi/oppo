@@ -31,7 +31,7 @@
 	<?php foreach ($links as $link) { ?>
 		<link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
 	<?php } ?>
-	
+	<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo TEMPLATE_FOLDER; ?>stylesheet/stylesheet.css" />
 	<?php foreach ($styles as $style) { ?>
 		<link rel="<?php echo $style['rel']; ?>" type="text/css" href="<?php echo $style['href']; ?>" media="<?php echo $style['media']; ?>" />
@@ -39,7 +39,6 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script>window.$ || document.write('<script src="catalog/view/javascript/jquery/jquery-1.7.1.min.js"><\/script>')</script>
 	<script type="text/javascript" src="catalog/view/javascript/jquery/ui/jquery-ui-1.8.16.custom.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css" />
 	<script type="text/javascript" src="catalog/view/javascript/jquery/ui/external/jquery.cookie.js"></script>
 	<script type="text/javascript" src="catalog/view/javascript/jquery/colorbox/jquery.colorbox.js"></script>
 	<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/colorbox/colorbox.css" media="screen" />
