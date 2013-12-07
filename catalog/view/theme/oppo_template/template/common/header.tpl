@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 	if (isset($_SERVER['HTTP_USER_AGENT']) && !strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE 6')) echo '<?xml version="1.0" encoding="UTF-8"?>'. "\n";
 ?>
 
@@ -13,40 +13,43 @@
 	<title><?php echo $title; ?></title>
 	
 	<base href="<?php echo $base; ?>" >
-	
+	<?php if($_SERVER['REQUEST_URI']=='/old-fashioned'){
+		echo '<link rel="cannonical" href="http://opposhop.com.ua">';
+		echo "\n\t";
+	} ?>
 	<?php if ($description) { ?>
-		<meta name="description" content="<?php echo $description; ?>" />
+	<meta name="description" content="<?php echo $description; ?>" />
 	<?php } ?>
 	<?php if ($keywords) { ?>
-		<meta name="keywords" content="<?php echo $keywords; ?>" />
+	<meta name="keywords" content="<?php echo $keywords; ?>" />
 	<?php } ?>
 	<meta name="author" content="<?php echo $name; ?>">
 	
 	<?php if ($icon) { ?>
-		<link href="<?php echo $icon; ?>" rel="icon" />
-		<link rel="shortcut icon" href="<?php echo $icon; ?>">
-		<link rel="apple-touch-icon" href="<?php echo $icon; ?>">
+	<link href="<?php echo $icon; ?>" rel="icon" />
+	<link rel="shortcut icon" href="<?php echo $icon; ?>">
+	<link rel="apple-touch-icon" href="<?php echo $icon; ?>">
 	<?php } ?>
 	
 	<?php foreach ($links as $link) { ?>
-		<link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
+	<link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
 	<?php } ?>
 	<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo TEMPLATE_FOLDER; ?>stylesheet/stylesheet.css" />
 	<?php foreach ($styles as $style) { ?>
-		<link rel="<?php echo $style['rel']; ?>" type="text/css" href="<?php echo $style['href']; ?>" media="<?php echo $style['media']; ?>" />
+	<link rel="<?php echo $style['rel']; ?>" type="text/css" href="<?php echo $style['href']; ?>" media="<?php echo $style['media']; ?>" />
 	<?php } ?>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script>window.$ || document.write('<script src="catalog/view/javascript/jquery/jquery-1.7.1.min.js"><\/script>')</script>
-	<script type="text/javascript" src="catalog/view/javascript/jquery/ui/jquery-ui-1.8.16.custom.min.js"></script>
-	<script type="text/javascript" src="catalog/view/javascript/jquery/ui/external/jquery.cookie.js"></script>
-	<script type="text/javascript" src="catalog/view/javascript/jquery/colorbox/jquery.colorbox.js"></script>
+	<script  src="catalog/view/javascript/jquery/ui/jquery-ui-1.8.16.custom.min.js"></script>
+	<script async src="catalog/view/javascript/jquery/ui/external/jquery.cookie.js"></script>
+	<script async src="catalog/view/javascript/jquery/colorbox/jquery.colorbox.js"></script>
 	<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/colorbox/colorbox.css" media="screen" />
-	<script type="text/javascript" src="catalog/view/javascript/jquery/tabs.js"></script>
-	<script type="text/javascript" src="catalog/view/javascript/common.js"></script>
-	<script type="text/javascript" src="catalog/view/javascript/quick_search.js"></script>
+	<script async src="catalog/view/javascript/jquery/tabs.js"></script>
+	<script async src="catalog/view/javascript/common.js"></script>
+	<script async src="catalog/view/javascript/quick_search.js"></script>
 	<?php foreach ($scripts as $script) { ?>
-		<script type="text/javascript" src="<?php echo $script; ?>"></script>
+		<script async src="<?php echo $script; ?>"></script>
 	<?php } ?>
 	
 	<!--[if IE 7]>
@@ -54,8 +57,8 @@
 	<![endif]-->
 	<!--[if lt IE 7]>
 		<link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/ie6.css" />
-		<script type="text/javascript" src="catalog/view/javascript/DD_belatedPNG_0.0.8a-min.js"></script>
-		<script type="text/javascript">
+		<script async src="catalog/view/javascript/DD_belatedPNG_0.0.8a-min.js"></script>
+		<script async>
 			DD_belatedPNG.fix('#logo img');
 		</script>
 	<![endif]-->
@@ -125,7 +128,7 @@
     				 	"name" =>  	"Корзина",
     				 	"children" => array(),
 					  	"column" => 	"1",
-					  	"href" =>  	"http://oppo.lc/index.php?route=checkout/cart",
+					  	"href" =>  	"http://opposhop.com.ua/index.php?route=checkout/cart",
 					  	"active" =>  (isSet($_GET['route']) && $_GET['route'] == 'checkout/cart') ? true : false,
     				 ));
     				 $categor = $categories+$cartArray;
