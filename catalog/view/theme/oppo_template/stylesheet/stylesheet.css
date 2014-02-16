@@ -1767,6 +1767,8 @@ a.btn-cart.white:before{
     text-decoration: none;
     font-size: 15px;
     margin-top: 10px;
+    height: 40px;
+    overflow: hidden;
 }
 
 .product-grid .description {
